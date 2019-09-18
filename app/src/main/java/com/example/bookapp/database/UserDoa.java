@@ -22,6 +22,12 @@ public interface  UserDoa {
     User loadUsersById(String id);
 
     @Query("select * from user where name =:firstName and lastName =:lastName")
-    List<User> getLastNaame(String lastName, String firstName);
+    List<User> getLastName(String lastName, String firstName);
+
+    @Query("select * from user where :age <= age")
+    List<User> findUsersYoungerAge(int age);
+
+    @Query("delete from user")
+    void deleteAll();
 
 }
