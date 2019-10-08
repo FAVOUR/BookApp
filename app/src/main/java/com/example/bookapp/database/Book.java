@@ -1,6 +1,7 @@
 package com.example.bookapp.database;
 
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 /**
@@ -10,7 +11,7 @@ import androidx.room.PrimaryKey;
 
 // *Copyright (c) 2019  Itex Integrated Services  All rights reserved.
 
-@Entity
+@Entity(indices ={@Index("id")})
 public class Book {
 
     @PrimaryKey

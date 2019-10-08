@@ -1,6 +1,8 @@
 package com.example.bookapp.database;
 
 import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import java.util.List;
@@ -15,6 +17,12 @@ import java.util.List;
 @Dao
 public interface BookDoa {
 
+    @Query("SELECT * FROM Book")
+    List<Book> getAllBooks();
+
     @Query("SELECT * FROM Book WHERE id = :id")
-        List<Book> allBooks(int id);
+    List<Book> getBookByID(int id);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+     void addBook(Book book);
 }
