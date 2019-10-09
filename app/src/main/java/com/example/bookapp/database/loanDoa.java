@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Dao
-public interface  loanDoa {
+public interface LoanDoa {
 
     @Query("SELECT * from loan where user_id = :id")
      public Loan bookLoanedByUser(int id);

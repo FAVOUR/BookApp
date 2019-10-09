@@ -3,6 +3,8 @@ package com.example.bookapp.database;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
@@ -12,7 +14,8 @@ import java.util.Date;
  */
 
 
-@Entity(foreignKeys = {
+
+@Entity(indices = {@Index("user_id"),@Index("book_id")},foreignKeys = {
         @ForeignKey(entity = User.class,
                 parentColumns ="id",
                 childColumns = "user_id"),
@@ -23,8 +26,9 @@ import java.util.Date;
 public class Loan {
 
     //Fields should be public if private use getters and setters
-
+    @PrimaryKey
     public int id;
+
 
     public Date startDate;
 
