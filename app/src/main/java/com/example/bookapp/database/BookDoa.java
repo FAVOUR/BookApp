@@ -1,5 +1,6 @@
 package com.example.bookapp.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -18,7 +19,7 @@ import java.util.List;
 public interface BookDoa {
 
     @Query("SELECT * FROM Book")
-    List<Book> getAllBooks();
+    LiveData<List<Book> >getAllBooks();
 
     @Query("SELECT * FROM Book WHERE id = :id")
     List<Book> getBookByID(int id);

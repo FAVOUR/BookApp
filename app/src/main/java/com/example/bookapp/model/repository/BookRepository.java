@@ -3,6 +3,8 @@ package com.example.bookapp.model.repository;
 import android.app.Application;
 import android.os.AsyncTask;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.bookapp.database.Book;
 import com.example.bookapp.database.BookDoa;
 import com.example.bookapp.database.BookLoanDb;
@@ -21,10 +23,10 @@ public class BookRepository {
    BookLoanDb bookLoanDb ;
    BookDoa bookDoa;
    Book books;
-   List<Book> booksInStore;
+    LiveData<List<Book>>  booksInStore;
 
 
-    BookRepository(Application application){
+    public BookRepository(Application application){
 
         bookLoanDb =BookLoanDb.getInstance(application);
         bookDoa=bookLoanDb.getBookDoa();
@@ -36,7 +38,7 @@ public class BookRepository {
 
 
 
-    public List<Book>  getAllBooks(){
+    public LiveData<List<Book>>  getAllBooks(){
         return booksInStore;
     }
 
