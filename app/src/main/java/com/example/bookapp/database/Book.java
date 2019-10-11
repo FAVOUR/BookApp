@@ -1,6 +1,7 @@
 package com.example.bookapp.database;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -14,8 +15,18 @@ import androidx.room.PrimaryKey;
 @Entity(indices ={@Index("id")})
 public class Book {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate =true)
+
     public int id;
 
     public String title;
+
+    @Ignore
+    public Book(String title) {
+        this.title = title;
+    }
+
+    public Book(int id, String title) {
+        this.title = title;
+    }
 }
