@@ -1,6 +1,7 @@
 package com.example.bookapp.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,14 @@ public class BookRv extends RecyclerView.Adapter<BookRv.BookViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
 
+
+//        Log.d("Book id     <>>>>> ", String.valueOf(book.get(position).id));
+//
+//
+//        Log.d("Book title    <>>>>> ", String.valueOf(book.get(position).title));
+
         holder.bookNumberTitle.setText(book.get(position).title);
-        holder.bookNumberId.setText(book.get(position).id);
+        holder.bookNumberId.setText(String.valueOf(book.get(position).id));
 
     }
 
@@ -53,14 +60,20 @@ public class BookRv extends RecyclerView.Adapter<BookRv.BookViewHolder> {
     public int getItemCount() {
         int allBooks = 0;
 
-        if( book != null )
-            allBooks=book.size();
+        if( book != null ) {
+//            Log.d("Book size    <>>>>> ", String.valueOf(book.size()));
+
+            allBooks = book.size();
+        }
+
+//        Log.d("Book size before returning the value    <>>>>> ", String.valueOf(allBooks));
 
         return allBooks;
     }
 
     public void setBook(List<Book> book) {
         this.book = book;
+        notifyDataSetChanged();
     }
 
     class BookViewHolder extends RecyclerView.ViewHolder {
@@ -72,11 +85,11 @@ public class BookRv extends RecyclerView.Adapter<BookRv.BookViewHolder> {
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
 
-             bookNumberId= itemView.findViewById(R.id.book_number);
+//            Log.d("ViewHolder   <>>>>> ","Assigning views ");
+
+
+            bookNumberId= itemView.findViewById(R.id.book_number);
              bookNumberTitle= itemView.findViewById(R.id.book_title);
-
-
-
 
 
         }

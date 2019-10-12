@@ -16,7 +16,6 @@ import androidx.room.PrimaryKey;
 public class Book {
 
     @PrimaryKey(autoGenerate =true)
-
     public int id;
 
     public String title;
@@ -27,6 +26,7 @@ public class Book {
     }
 
     public Book(int id, String title) {
+        this.id =id ;
         this.title = title;
     }
 }
