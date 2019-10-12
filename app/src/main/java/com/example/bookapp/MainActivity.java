@@ -37,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton= findViewById(R.id.fab_button);
 
         RecyclerView recyclerView=findViewById(R.id.book_rv);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        final BookRv bookRv = new BookRv(this);
+
+
+        recyclerView.setAdapter(bookRv);
+
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setAdapter(new BookRv(this));
 
 
 
@@ -54,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         bookRepository.getAllBooks().observe(this, new Observer<List<Book>>() {
             @Override
             public void onChanged(List<Book> books) {
-                BookRv bookRv = new BookRv(getBaseContext());
-                Log.d("Word >>>" , new Gson().toJson( books));
+
+//                Log.d("Word >>>" , new Gson().toJson( books));
                 bookRv.setBook(books);
             }
         });
